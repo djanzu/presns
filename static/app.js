@@ -5,14 +5,14 @@ const sendBtn = document.getElementById('send-btn');
 function appendMessage(role, content) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${role}`;
-    
+
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
     contentDiv.textContent = content;
-    
+
     messageDiv.appendChild(contentDiv);
     chatContainer.appendChild(messageDiv);
-    
+
     // Scroll to bottom
     chatContainer.scrollTop = chatContainer.scrollHeight;
 }
@@ -64,9 +64,9 @@ async function handleSend() {
         });
 
         const data = await response.json();
-        
+
         removeLoading();
-        
+
         if (response.ok) {
             appendMessage('assistant', data.evaluation);
         } else {
@@ -85,6 +85,7 @@ async function handleSend() {
 sendBtn.addEventListener('click', handleSend);
 
 postInput.addEventListener('keydown', (e) => {
+    if (e.isComposing || e.keyCode === 229) return;
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         handleSend();
