@@ -8,7 +8,7 @@ function appendMessage(role, content) {
 
     const contentDiv = document.createElement('div');
     contentDiv.className = 'message-content';
-    contentDiv.textContent = content;
+    contentDiv.innerHTML = marked.parse(content);
 
     messageDiv.appendChild(contentDiv);
     chatContainer.appendChild(messageDiv);
