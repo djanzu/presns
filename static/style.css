@@ -127,6 +127,10 @@ header p {
     white-space: pre-wrap;
 }
 
+.message-content {
+    white-space: pre-wrap;
+}
+
 .input-area {
     padding: 20px 24px;
     background: rgba(0, 0, 0, 0.2);
